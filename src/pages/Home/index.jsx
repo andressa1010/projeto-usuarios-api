@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import api from "../../services/api";
 
 import {
   Estilo,
@@ -21,13 +22,13 @@ function App() {
 
 
  async function registerNewUse(){
-  /* const data=  await api.post("/usuarios", {
+  const data=  await api.post("/usuarios", {
     name: inputName.current.value,
     age: parseInt( inputIdade.current.value) ,
     email: inputEmail.current.value
    })
 
-   console.log(data)  */
+   console.log(data) 
   }
 
 
