@@ -14,7 +14,7 @@ import {
 
 import Users from "../Home/assets/users.png";
 
-function App() {
+function Home() {
 
   const inputName= useRef()
   const inputIdade= useRef()
@@ -40,7 +40,7 @@ function App() {
         </Topblackgorund>
 
         <Form>
-          <Title>Cadastra Usuários</Title>
+          <Title>Cadastrar Usuários</Title>
 
           <ContainerInputs>
             
@@ -76,4 +76,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
