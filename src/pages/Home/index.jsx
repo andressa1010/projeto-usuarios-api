@@ -3,16 +3,17 @@ import api from "../../services/api";
 
 import {
   Estilo,
-  Topblackgorund,
   Form,
   Title,
   ContainerInputs,
   Input,
-  Button,
+
   InputLabel,
 } from "./style";
+import TopBackground from "../../components/topBackground";
+import { Button } from "../../components/Button/style";
 
-import Users from "../Home/assets/users.png";
+
 
 function Home() {
 
@@ -35,9 +36,7 @@ function Home() {
   return (
     <>
       <Estilo>
-        <Topblackgorund>
-          <img src={Users}/>
-        </Topblackgorund>
+        <TopBackground/>
 
         <Form>
           <Title>Cadastrar Usuários</Title>
@@ -62,15 +61,19 @@ function Home() {
 
             <div style={{width: "100%"}}>
               <InputLabel>
-                Email <span>*</span>{" "}
+                Email <span>*</span>
               </InputLabel>
               <Input type="email" placeholder="E-mail do Usuário" ref={inputEmail} />
             </div>
         
-          <Button type="button" onClick={registerNewUse}  >Cadastrar Usuários</Button>
+          <Button type="button" onClick={registerNewUse} theme="primary"
+          >Cadastrar Usuários</Button>
 
     
         </Form>
+        <Button type="button" >Ver lista de usuários</Button>
+
+  
       </Estilo>
     </>
   );
