@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  border: none;
+  border: ${(props)=> props.theme === "primary" ? "none" : "1px solid #ffff;"};
   background: ${(props) =>
     props.theme === "primary"
       ? " linear-gradient(180deg, #FE7E5D 0% , #FF6378 100%)"
