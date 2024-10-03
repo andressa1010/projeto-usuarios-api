@@ -26,13 +26,14 @@ function Home() {
 
 
  async function registerNewUse(){
-  const data=  await api.post("/usuarios", {
+   await api.post("/usuarios", {
     name: inputName.current.value,
     age: parseInt( inputIdade.current.value) ,
     email: inputEmail.current.value
    })
-
-   console.log(data) 
+   
+   navigate("/lista-de-usuarios")
+   
   }
 
 
