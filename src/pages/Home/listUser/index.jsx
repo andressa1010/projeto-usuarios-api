@@ -2,9 +2,10 @@ import TopBackground from "../../../components/topBackground";
 import api from "../../../services/api";
 import { useEffect } from "react";
 import { useState } from "react";
-import { CardUsers, Container, ContainerUser, TitleNovo, TrashIcon } from "./style";
+import { AvatarUser, CardUsers, Container, ContainerUser, TitleNovo, TrashIcon } from "./style";
 import { Button } from "../../../components/Button/style";
 import trash from "../assets/trash.svg"
+import { useNavigate } from "react-router-dom";
 
 function ListUser() {
   const [user, setUser] = useState([]);
@@ -18,6 +19,17 @@ function ListUser() {
     getUsers();
   }, []);
 
+
+  async function deleteUsers(id){
+     await api.delete(`/usuarios/${id}`)
+
+     const updateUsers= user.filter(user => user.id!== id)
+
+     setUser(updateUsers)
+  }
+
+  const navigate=useNavigate()
+
   return (
     <>
       <Container>
@@ -26,19 +38,24 @@ function ListUser() {
         <TitleNovo>Lista de Usuários</TitleNovo>
 
         <ContainerUser>
-          <CardUsers key={user.id}>
+        
             {user.map((user) => (
-              <div>
-                <p>{user.name}</p>
+                <CardUsers key={user.id}>
+                  <AvatarUser src={`https://avatar.iran.liara.run/public?userName${user.id}`}  />
+                 <div>
+                <h3>{user.name}</h3>
                 <p>{user.age}</p>
                 <p>{user.email}</p>
-              </div>
+                </div>
+                <TrashIcon src={trash} onClick={()=>deleteUsers(user.id)} />
+                </CardUsers>
+              
             ))}
-            <TrashIcon src={trash} />
-          </CardUsers>
+         
+    
         </ContainerUser>
 
-        <Button type="button">Voltar</Button>
+        <Button type="button" onClick={()=> navigate("/")} >Voltar</Button>
       </Container>
     </>
   );
